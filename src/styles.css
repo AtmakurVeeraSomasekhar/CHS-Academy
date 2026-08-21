@@ -1,0 +1,163 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "katex/dist/katex.min.css";
+
+
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-navy-panel: var(--navy-panel);
+  --color-navy-elevated: var(--navy-elevated);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-brand-red: var(--brand-red);
+  --color-slate-divider: var(--slate-divider);
+  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --font-serif: "Merriweather", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.625rem;
+
+  --navy-deep: oklch(0.19 0.06 260);
+  --navy: oklch(0.22 0.06 260);
+  --navy-panel: oklch(0.26 0.055 260);
+  --navy-elevated: oklch(0.31 0.05 260);
+  --slate-divider: oklch(0.35 0.04 260);
+  --gold: oklch(0.79 0.13 85);
+  --gold-soft: oklch(0.85 0.09 85);
+  --brand-red: oklch(0.58 0.22 27);
+
+  --background: var(--navy-deep);
+  --foreground: oklch(0.98 0.005 240);
+  --card: var(--navy-panel);
+  --card-foreground: oklch(0.98 0.005 240);
+  --popover: var(--navy-panel);
+  --popover-foreground: oklch(0.98 0.005 240);
+  --primary: var(--gold);
+  --primary-foreground: var(--navy-deep);
+  --secondary: var(--navy-elevated);
+  --secondary-foreground: oklch(0.98 0.005 240);
+  --muted: var(--navy-elevated);
+  --muted-foreground: oklch(0.75 0.02 250);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy-deep);
+  --destructive: var(--brand-red);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: var(--slate-divider);
+  --input: var(--navy-elevated);
+  --ring: var(--gold);
+}
+
+.dark {
+  --background: var(--navy-deep);
+  --foreground: oklch(0.98 0.005 240);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body, #root { height: 100%; }
+  body {
+    background-color: #ffffff;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+  .chs-math-error {
+    color: #b91c1c;
+    background: #fef2f2;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+  }
+  /* Keep KaTeX in its own math font regardless of ambient font-family */
+  .katex, .katex * {
+    font-family: KaTeX_Main, KaTeX_Math, KaTeX_AMS, KaTeX_Caligraphic, KaTeX_Fraktur, KaTeX_SansSerif, KaTeX_Script, KaTeX_Size1, KaTeX_Size2, KaTeX_Size3, KaTeX_Size4, KaTeX_Typewriter, "Latin Modern Math", serif !important;
+  }
+}
+
+@utility text-gold { color: var(--gold); }
+@utility bg-navy-deep { background-color: var(--navy-deep); }
+@utility bg-navy-panel { background-color: var(--navy-panel); }
+@utility bg-navy-elevated { background-color: var(--navy-elevated); }
+@utility border-gold { border-color: var(--gold); }
+
+@utility chs-watermark {
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--gold) 8%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@utility chs-grid-board {
+  background-color: #12213d;
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--gold) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--gold) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in oklab, var(--gold) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--gold) 8%, transparent) 1px, transparent 1px);
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+}
+
+/* Hide UI chrome during html2canvas capture */
+.capturing .no-capture { visibility: hidden !important; }
+
+/* Hide Excalidraw's native chrome — CHS uses its own floating toolbar */
+.excalidraw .App-menu__left,
+.excalidraw .App-toolbar,
+.excalidraw .layer-ui__wrapper__top-right,
+.excalidraw .App-bottom-bar,
+.excalidraw .zoom-actions,
+.excalidraw .undo-redo-buttons,
+.excalidraw .help-icon,
+.excalidraw .Island.App-menu__left,
+.excalidraw .layer-ui__wrapper__footer-left,
+.excalidraw .layer-ui__wrapper__footer-right,
+.excalidraw .mobile-misc-tools-container,
+.excalidraw .App-menu_bottom {
+  display: none !important;
+}
+
+/* Infinite notes paper (Theory Mode) */
+.chs-notes-grid {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--navy-deep, #0b1a33) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--navy-deep, #0b1a33) 8%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px;
+}
+
+/* react-pdf text layer must never steal the pen from the annotation layer */
+.react-pdf__Page__textContent { user-select: text; }
+
+/* Thin scrollbar for dense panels (question palette) */
+.chs-scroll { scrollbar-width: thin; scrollbar-color: color-mix(in oklab, var(--gold) 60%, transparent) transparent; }
+.chs-scroll::-webkit-scrollbar { width: 8px; }
+.chs-scroll::-webkit-scrollbar-thumb { background: color-mix(in oklab, var(--gold) 55%, transparent); border-radius: 8px; }

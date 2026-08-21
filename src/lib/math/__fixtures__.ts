@@ -1,0 +1,23 @@
+// Real-shape SSC/JEE strings for the /dev/math visual harness.
+export const MATH_FIXTURES: string[] = [
+  "If $x + \\dfrac{1}{x} = 3$, then $x^2 + \\dfrac{1}{x^2} = ?$",
+  "Solve: $$\\int_0^1 x^2\\,dx$$",
+  "\\(\\lim_{n\\to\\infty} \\left(1+\\frac{1}{n}\\right)^n = e\\)",
+  "\\[\\sum_{k=1}^{n} k = \\dfrac{n(n+1)}{2}\\]",
+  "\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}",
+  "\\begin{aligned} (a+b)^2 &= a^2 + 2ab + b^2 \\\\ (a-b)^2 &= a^2 - 2ab + b^2 \\end{aligned}",
+  "$\\sqrt{a^2+b^2}$ and $\\sqrt[3]{27}=3$",
+  "Angle: $\\angle ABC = 60^\\circ$, $\\triangle ABC \\parallel \\triangle DEF$, $AB \\perp CD$",
+  "Reaction: $H_2 + O_2 \\rightarrow H_2O$; equilibrium $A \\rightleftharpoons B$",
+  "Ion: $Fe^{2+}$, $SO_4^{2-}$",
+  "Config: $1s^2\\,2s^2\\,2p^6$",
+  "Probability: $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$",
+  "Vector: $\\vec{v} = \\langle 1,2,3\\rangle$, $|\\vec{v}|=\\sqrt{14}$",
+  "$\\sin^2\\theta + \\cos^2\\theta = 1$",
+  "$\\dfrac{d}{dx}\\left(e^{x^2}\\right) = 2x e^{x^2}$",
+  "Determinant: $\\det\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix} = -2$",
+  "Broken input: $\\frac{1}{",
+  "Unicode + math: The value of π is $\\pi \\approx 3.14159$.",
+  "Multiple: $a$, $b$, and $c$ satisfy $a^2+b^2=c^2$.",
+  "Cases: $$f(x)=\\begin{cases} 1 & x>0 \\\\ 0 & x\\le 0 \\end{cases}$$",
+];
